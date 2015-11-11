@@ -1,5 +1,5 @@
 require 'barby'
-require 'barby/barcode/code_25'
+require 'barby/barcode/code_128'
 require 'barby/outputter/png_outputter'
 
 class GuestsController < ApplicationController
@@ -29,6 +29,7 @@ class GuestsController < ApplicationController
 
       blob = Barby::PngOutputter.new(@barcode) #Raw PNG data
       blob.xdim = 3
+      blob.ydim = 1
       tempfile = Tempfile.open(["#{@guest.barcode}", ".png"], Rails.root.join('tmp'), encoding: 'ascii-8bit')
 
       tempfile.write blob.to_png
