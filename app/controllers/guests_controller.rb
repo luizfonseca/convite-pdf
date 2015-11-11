@@ -10,7 +10,7 @@ class GuestsController < ApplicationController
   def create
     @guest = Guest.new(guest_params)
     if @guest.save
-      flash[:notice] = "Ok dok, salvamos!"
+      flash[:notice] = "Ok dok, salvamos! Seu código é #{@guest.barcode}. https://evento-coca-convites.herokuapp.com/convite/#{@guest.barcode}.pdf"
       redirect_to root_path
     else
       flash[:notice] = "Nope!"
