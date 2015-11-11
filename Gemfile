@@ -8,6 +8,7 @@ gem 'chunky_png'
 
 group :production do
   gem 'wkhtmltopdf-heroku'
+  gem 'rails_12factor'
 end
 
 
