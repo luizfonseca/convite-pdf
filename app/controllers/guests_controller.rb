@@ -1,5 +1,6 @@
 require 'barby'
-require 'barby/code_25'
+require 'barby/barcode/code_128'
+require 'barby/outputter/png_outputter'
 
 class GuestsController < ApplicationController
 
@@ -18,7 +19,27 @@ class GuestsController < ApplicationController
   end
 
   def show
+    unless params[:barcode].present?
+
+      @guest = Guest.find_by barcode: params[:id] 
+     
+      redirect_to root_path if @guest.nil?
+      
+      @barcode = Barby::Code128B.new('FRANGO')
+
+      blob = Barby::PngOutputter.new(@barcode).to_png #Raw PNG data
+      @file = Tempfile.open(["#{@guest.barcode}", ".png"], Rails.root.join('tmp')) do |f| 
+        f.write blob 
+      end
+
+      respond_to do |format|
+        format.pdf do
+          render pdf: @guest.name
+        end
+      end
+    end
   end
+
 
 
   def guest_params

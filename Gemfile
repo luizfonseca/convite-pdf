@@ -1,9 +1,14 @@
 source 'https://rubygems.org'
 
 
-
+gem 'puma'
 gem 'barby'
+gem 'wicked_pdf'
+gem 'chunky_png'
 
+group :production do
+  gem 'wkhtmltopdf-heroku'
+end
 
 
 

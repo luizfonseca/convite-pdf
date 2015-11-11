@@ -1,0 +1,115 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+  <title>Hello World</title>
+  <style>
+    body { font-family: Arial; font-size: .8em; }
+    .width-70 { width: 75%; margin: 0; padding: 0; display: inline-block }
+    .width-30 { width: 20%; margin: .2em 0; float: right; padding: .4em; color: white; display: inline-block; border-left: 4px dashed white; min-height: 300px; height: 100%; }
+    .container { background: #DE0B1C; min-height: 380px; height: 100%; border-radius: 8px; overflow: hidden; }
+    .label-container { background: white; border-radius: 6px; margin: .6em .2em .8em 1.5em; padding: .2em .6em; } 
+    .label-container:first-child { margin-top: 1.5em } 
+    .label-container:last-child { margin-bottom: 1.5em } 
+    .definition { color: #DE0B1C; display: block; font-weight: bold; font-size: 14px; }
+    .value { color: #555; display: block; margin-top: .2em }
+    .barcode { background: white; padding: .8em; margin: 0 auto;  }
+    .barby-barcode { width: 75%; height: 60px; } 
+    .barby-barcode .on { background: black; width }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <div class="width-70">
+      <div class="label-container">
+        <span class="definition">
+           Class 
+        </span>
+
+        <span class="value">
+          <%= @guest.id %>
+        </span>
+      </div>
+
+      <div class="label-container">
+        <span class="definition">
+           Data   Dia   Mes   Ano 
+        </span>
+
+        <span class="value">
+          <%= @guest.created_at.strftime("%d-%m-%Y")  %>
+        </span>
+      </div>
+
+
+
+      <div class="label-container">
+        <span class="definition">
+           Horário de Embarque 
+        </span>
+
+        <span class="value">
+          <%= @guest.created_at.strftime("%H:%M")  %>
+        </span>
+      </div>
+
+
+
+
+      <div class="label-container">
+        <span class="definition">
+           Nome 
+        </span>
+
+        <span class="value">
+          <%= @guest.name  %>
+        </span>
+      </div>
+
+
+
+      <div class="label-container">
+        <span class="definition">
+           Uso interno 
+        </span>
+
+        <span class="value">
+          &nbsp; 
+        </span>
+      </div>
+
+
+
+
+      <div class="label-container">
+        <span class="definition">
+           Outras especificações 
+        </span>
+
+        <span class="value">
+          &nbsp; 
+        </span>
+      </div>
+
+
+      <div class="label-container">
+        <div class="barcode">
+          <img src="<%= @file.path %>"/>
+          <%= @file.inspect %>
+          
+        </div>
+      </div>
+      
+
+
+    </div>
+
+    <div class="width-30">
+      &nbsp; 
+    </div>
+  </div>
+
+</body>
+</html>

@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
 
   resources :guests, only: [:create, :new]
+  resources :guests, only: [:show], path: :convite
+
   root 'pages#index'
 
   # The priority is based upon order of creation: first created -> highest priority.
