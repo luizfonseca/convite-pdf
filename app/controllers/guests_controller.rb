@@ -1,5 +1,5 @@
 require 'barby'
-require 'barby/barcode/code_128'
+require 'barby/barcode/code_25'
 require 'barby/outputter/png_outputter'
 
 class GuestsController < ApplicationController
@@ -25,12 +25,17 @@ class GuestsController < ApplicationController
      
       redirect_to root_path if @guest.nil?
       
-      @barcode = Barby::Code128B.new('FRANGO')
+      @barcode = Barby::Code128B.new(@guest.barcode)
 
-      blob = Barby::PngOutputter.new(@barcode).to_png #Raw PNG data
-      @file = Tempfile.open(["#{@guest.barcode}", ".png"], Rails.root.join('tmp'), encoding: 'ascii-8bit') do |f| 
-        f.write blob 
-      end
+      blob = Barby::PngOutputter.new(@barcode) #Raw PNG data
+      blob.xdim = 3
+      tempfile = Tempfile.open(["#{@guest.barcode}", ".png"], Rails.root.join('tmp'), encoding: 'ascii-8bit')
+
+      tempfile.write blob.to_png
+      tempfile.close
+
+      @file = tempfile.path 
+
 
       respond_to do |format|
         format.pdf do
