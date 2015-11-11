@@ -1,0 +1,28 @@
+<div class="row">
+
+  <div class="medium-6 medium-centered columns form">
+    <h2>Confirme seus dados</h2>
+
+    <%= form_for @guest do |f| %>
+      <label>
+        Nome
+        <%= f.text_field :name, placeholder: 'Digite seu nome completo'  %>
+      </label>
+      <label>
+        Email
+        <%= f.text_field :email, placeholder: 'Digite seu email' %>
+      </label>
+
+      <label>
+        Telefone
+        <%= f.text_field :phone, placeholder: 'Digite seu telefone fixo ou celular' %>
+      </label>
+
+      <div class="text-right">
+        <br/>
+        <%= f.submit :Enviar, class: "button" %>
+      </div>
+    <% end %>
+  </div>
+
+</div>
