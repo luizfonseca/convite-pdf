@@ -40,7 +40,9 @@ class GuestsController < ApplicationController
 
       respond_to do |format|
         format.pdf do
-          render pdf: @guest.name
+          @pdf = render_to_string pdf: @guest.name, encoding: 'UTF-8', template: 'guests/show'
+          send_data(@pdf, filename: @guest.name, type: 'application/pdf')
+
         end
       end
     end
