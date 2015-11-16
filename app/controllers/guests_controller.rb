@@ -39,10 +39,14 @@ class GuestsController < ApplicationController
 
 
       respond_to do |format|
+        format.html
         format.pdf do
-          @pdf = render_to_string pdf: @guest.name, encoding: 'UTF-8', template: 'guests/show'
-          send_data(@pdf, filename: "#{@guest.name}.pdf", type: 'application/pdf')
-
+          if params[:download]
+            @pdf = render_to_string pdf: @guest.name, encoding: 'UTF-8', template: 'guests/show'
+            send_data(@pdf, filename: "#{@guest.name}.pdf", type: 'application/pdf')
+          else
+            render pdf: @guest.name
+          end
         end
       end
     end
