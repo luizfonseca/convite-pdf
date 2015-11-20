@@ -6,52 +6,95 @@
   <title>Convite Evento Coca-Cola</title>
   <style>
     body { font-family: Arial; font-size: .8em; }
-    .width-70 { width: 75%; margin: 0; padding: 0; display: inline-block }
-    .width-30 { width: 20%; margin: .2em 0; float: right; padding: .4em; color: white; display: inline-block; border-left: 4px dashed white; min-height: 380px; height: 100%; }
-    .container { background: #DE0B1C; min-height: 380px; height: 100%; border-radius: 8px; overflow: hidden; }
-    .label-container { background: white; border-radius: 6px; margin: .6em .2em .8em 1.5em; padding: .2em .6em; } 
-    .label-container:first-child { margin-top: 1.5em } 
+    .width-70 {
+      background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAQAAAAECAYAAACp8Z5+AAAAAXNSR0IArs4c6QAAABVJREFUCB1jYEAC38WU/sO5RHKA6gEoewi5elDqUgAAAABJRU5ErkJggg==);
+    
+    }
+    .width-70 { width: 70%; margin: 0; padding: 0; float: left }
+    .width-30 { text-align: center; background: white; width: 29.8%; float: right; color: white; border-left: 2px dotted #999; min-height: 394px; height: 100%; }
+    .width-30 img { width: 90%; display: block; margin: 0 auto; }
+
+    .container { border: 1px solid #999; min-height: 380px; height: 100%; border-radius: 8px; overflow: hidden; }
+    .content-padding { padding: .6em 1em }
+
+    .label-container { background: white; font-size: .6em;  margin: 0 0 .8em 0; padding: .8em .8em; } 
     .label-container:last-child { margin-bottom: 1.5em } 
-    .definition { color: #DE0B1C; display: block; font-weight: bold; font-size: 14px; }
-    .value { color: #555; display: block; margin-top: .2em }
-    .barcode { background: white; padding: .8em; margin: 0 auto;  }
-    .barby-barcode { width: 75%; height: 60px; } 
-    .barby-barcode .on { background: black; width }
+    .definition { color: #DE0B1C; display: block; font-size: .7em; font-weight: bold; text-transform: uppercase; }
+    .value { color: #333; display: block; margin-top: .2em; font-weight: 500; font-size: 1.6em; text-transform: uppercase; font-family: Times New Roman }
+    .barcode { background: white; padding: .2em; margin: 0 auto;  }
+
+    .mid-container { width: 46.57%; display: inline-block; }
+    .mid-container.mid-second { margin-left: .6em; }
+    h4 { color: #DE0B1C; font-weight: bold; text-shadow: 0 1px 0 #FA646D; letter-spacing: .4px; font-size: 1.2em; text-align: right; margin: .4em  0 .6em 0; padding: 0  } 
+    
   </style>
 </head>
 
 <body>
   <div class="container">
     <div class="width-70">
-      <div class="label-container">
-        <span class="definition">
-           Class 
-        </span>
+      <div class="content-padding">
+        <h4>< C A R T Ã O &nbsp; D E &nbsp; E M B A R Q U E > </h4>  
 
-        <span class="value">
-          <%= @guest.id %>
-        </span>
-      </div>
 
-      <div class="label-container">
-        <span class="definition">
-           Data   Dia   Mes   Ano 
-        </span>
-
-        <span class="value">
-          <%= @guest.created_at.strftime("%d-%m-%Y")  %>
-        </span>
+      <div class="label-container red-label">
+        <img src="http://i.imgur.com/BqFHNtd.png" style="width: 90%"/>
       </div>
 
 
 
       <div class="label-container">
+        <span class="definition">
+           Destino 
+        </span>
+
+        <span class="value">
+          1 SISTEMA 1 VOZ  |  COCA-COLA BRASIL
+        </span>
+      </div>
+
+      <div class="label-container">
+        <span class="definition">
+           Data
+        </span>
+
+        <span class="value">
+          <%= @guest.created_at.strftime('%d de %B de %Y')  %>
+        </span>
+      </div>
+
+
+
+      <div class="label-container mid-container">
         <span class="definition">
            Horário de Embarque 
         </span>
 
         <span class="value">
-          <%= @guest.created_at.strftime("%H:%M")  %>
+          8:00 
+        </span>
+      </div>
+
+
+      <div class="label-container mid-container mid-second">
+        <span class="definition">
+           Horário de Desembarque 
+        </span>
+
+        <span class="value">
+          18:00
+        </span>
+      </div>
+
+
+
+      <div class="label-container">
+        <span class="definition">
+          Local de embarque
+        </span>
+
+        <span class="value">
+          ROYAL TULIP - Av. Aquarela do Brasil, 75 / São Conrado
         </span>
       </div>
 
@@ -70,28 +113,7 @@
 
 
 
-      <div class="label-container">
-        <span class="definition">
-           Uso interno 
-        </span>
 
-        <span class="value">
-          &nbsp; 
-        </span>
-      </div>
-
-
-
-
-      <div class="label-container">
-        <span class="definition">
-           Outras especificações 
-        </span>
-
-        <span class="value">
-          &nbsp; 
-        </span>
-      </div>
 
 
       <div class="label-container">
@@ -102,11 +124,11 @@
       </div>
       
 
-
+      </div>
     </div>
 
     <div class="width-30">
-      &nbsp; 
+     <img src="http://i.imgur.com/4RwMoaC.png"/>
     </div>
   </div>
 
