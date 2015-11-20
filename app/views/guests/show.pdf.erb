@@ -59,7 +59,7 @@
         </span>
 
         <span class="value">
-          <%= @guest.created_at.strftime('%d de %B de %Y')  %>
+          <%= I18n.l @guest.created_at, format: :long_no_hour  %>
         </span>
       </div>
 
