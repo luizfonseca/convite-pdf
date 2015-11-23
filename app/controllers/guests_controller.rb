@@ -45,7 +45,7 @@ class GuestsController < ApplicationController
             @pdf = render_to_string pdf: @guest.name, encoding: 'UTF-8', template: 'guests/show'
             send_data(@pdf, filename: "#{@guest.name}.pdf", type: 'application/pdf')
           else
-            render pdf: @guest.name
+            render pdf: @guest.name, disable_smart_shrinking: false
           end
         end
       end
