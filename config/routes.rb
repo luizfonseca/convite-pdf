@@ -1,6 +1,5 @@
 Rails.application.routes.draw do
 
-  resources :guests, only: [:create, :new]
   resources :guests, only: [:show], path: :convite
 
   root 'pages#index'
