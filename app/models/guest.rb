@@ -5,6 +5,6 @@ class Guest < ActiveRecord::Base
 
 
   def generate_barcode
-    self.barcode = (Time.now.to_i / 2) * rand(99)
+    self.barcode = SecureRandom.random_number(100000000000) 
   end
 end

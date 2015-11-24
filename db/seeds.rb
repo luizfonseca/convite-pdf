@@ -21,8 +21,9 @@ lista1.each do |guest|
   if guest[0].blank?
     next
   end
-
-  Guest.where(name: guest[0].strip, email: guest[1].strip, scheduled_at: DateTime.strptime(guest[2], '%d/%m/%y')).first_or_create
+  
+  g = Guest.where(name: guest[0].strip, email: guest[1].strip, scheduled_at: DateTime.strptime(guest[2], '%d/%m/%y')).first_or_create
+  puts g.barcode
 end
 
 
