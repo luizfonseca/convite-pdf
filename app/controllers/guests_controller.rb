@@ -28,7 +28,7 @@ class GuestsController < ApplicationController
       @barcode = Barby::Code128B.new(@guest.barcode)
 
       blob = Barby::PngOutputter.new(@barcode) #Raw PNG data
-      blob.xdim = 6
+      blob.xdim = 7
       blob.ydim = 3
       tempfile = Tempfile.open(["#{@guest.barcode}", ".png"], Rails.root.join('tmp'), encoding: 'ascii-8bit')
 
