@@ -8,23 +8,48 @@
 
 require 'csv'
 
-
-
-
-# Lista do dia 24/11
+# Lista Teste
 # TODO: comentar o codigo até a proxima lista!
-lista1 = CSV.read(Rails.root.join('db/guests/lista1_1811.csv'), encoding: 'ISO8859-1')
+lista2 = CSV.read(Rails.root.join('db/guests/lista_test.csv'), encoding: 'ISO8859-1')
 
 
-lista1.each do |guest|
+lista2.each do |guest|
 
   if guest[0].blank?
     next
   end
+
+  Guest.where(name: guest[0].strip, email: guest[1].strip, scheduled_at: DateTime.strptime(guest[2], '%d/%m/%y')).first_or_create
   
-  g = Guest.where(name: guest[0].strip, email: guest[1].strip, scheduled_at: DateTime.strptime(guest[2], '%d/%m/%y')).first_or_create
-  puts g.barcode
 end
+
+
+
+
+## Lista do dia 24/11
+## TODO: comentar o codigo até a proxima lista!
+#lista1 = CSV.read(Rails.root.join('db/guests/lista1_1811.csv'), encoding: 'ISO8859-1')
+
+
+#lista1.each do |guest|
+
+  #if guest[0].blank?
+    #next
+  #end
+  
+  #g = Guest.where(name: guest[0].strip, email: guest[1].strip, scheduled_at: DateTime.strptime(guest[2], '%d/%m/%y')).first_or_create
+  #puts g.barcode
+#end
+
+
+
+
+
+
+
+
+
+
 
 
 
