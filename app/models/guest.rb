@@ -5,6 +5,16 @@ class Guest < ActiveRecord::Base
 
 
   def generate_barcode
-    self.barcode = SecureRandom.random_number(100000000000) 
+    jazz = true
+    while jazz do
+      new_barcode    = SecureRandom.random_number(100000000000) 
+      existing       = Guest.find_by barcode: new_barcode
+
+      puts existing.present?
+      next if existing.present?
+
+      self.barcode = new_barcode
+      jazz = false
+    end
   end
 end

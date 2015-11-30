@@ -10,18 +10,18 @@ require 'csv'
 
 # Lista Teste
 # TODO: comentar o codigo até a proxima lista!
-test = CSV.read(Rails.root.join('db/guests/lista_test.csv'), encoding: 'ISO8859-1')
+#test = CSV.read(Rails.root.join('db/guests/lista_test.csv'), encoding: 'ISO8859-1')
 
 
-test.each do |guest|
+#test.each do |guest|
 
-  if guest[0].blank?
-    next
-  end
+  #if guest[0].blank?
+    #next
+  #end
 
-  Guest.where(name: guest[0].strip, group: "test", email: guest[1].strip, scheduled_at: DateTime.strptime(guest[2], '%d/%m/%y')).first_or_create
+  #Guest.where(name: guest[0].strip, group: "test", email: guest[1].strip, scheduled_at: DateTime.strptime(guest[2], '%d/%m/%y')).first_or_create
   
-end
+#end
 
 
 
@@ -44,20 +44,20 @@ end
 
 
 
-# Lista do dia ____
-# TODO: comentar o codigo até a proxima lista!
-#lista2 = CSV.read(Rails.root.join('db/guests/lista2_2811.csv'), encoding: 'ISO8859-1')
+# Lista do dia 30/11 
+## TODO: comentar o codigo até a proxima lista!
+lista2 = CSV.read(Rails.root.join('db/guests/lista2_3011.csv'), encoding: 'ISO8859-1')
 
 
-#lista2.each do |guest|
+lista2.each do |guest|
 
-  #if guest[0].blank?
-    #next
-  #end
+  if guest[0].blank?
+    next
+  end
 
-  #Guest.where(name: guest[0].strip, email: guest[1].strip, scheduled_at: DateTime.strptime(guest[2], '%d/%m/%y')).first_or_create
-  
-#end
+  g = Guest.where(name: guest[0].strip, email: guest[1].strip, scheduled_at: DateTime.strptime(guest[2], '%d/%m/%y')).first_or_create
+  puts g.barcode
+end
 
 
 
