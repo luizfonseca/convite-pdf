@@ -9,4 +9,9 @@ class Api::GuestsController < ApplicationController
     render json: {}, status: :unprocessable_entity unless @guest.present?
   end
 
+
+  def show
+
+  end
+
 end

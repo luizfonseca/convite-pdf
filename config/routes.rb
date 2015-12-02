@@ -4,7 +4,8 @@ Rails.application.routes.draw do
 
 
   namespace :api do 
-    resources :guests, only: [:update]
+    put '/guests' => "guests#update"
+    get '/guests' => "guests#show"
   end
 
   root 'pages#index'
