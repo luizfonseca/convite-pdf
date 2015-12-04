@@ -91,13 +91,12 @@ lista3.each do |guest|
 
   g = Guest.find_by(email: guest[1].strip)
   if g.present?
-    g.scheduled_at = DateTime.strptime(guest[2], '%d/%m/%y')
-    g.save!
+    g.update_attribute(:scheduled_at, DateTime.strptime(guest[2], '%d/%m/%y'))
+    puts g.barcode
   else
     puts "ERROR: #{guest[1]}"
   end
 
-  puts g.barcode
 end
 
 
