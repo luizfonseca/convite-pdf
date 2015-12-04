@@ -44,12 +44,29 @@ require 'csv'
 
 
 
-# Lista do dia 30/11 
+## Lista do dia 30/11 
+### TODO: comentar o codigo até a proxima lista!
+#lista2 = CSV.read(Rails.root.join('db/guests/lista2_3011.csv'), encoding: 'ISO8859-1')
+
+
+#lista2.each do |guest|
+
+  #if guest[0].blank?
+    #next
+  #end
+
+  #g = Guest.where(name: guest[0].strip, email: guest[1].strip, scheduled_at: DateTime.strptime(guest[2], '%d/%m/%y')).first_or_create
+  #puts g.barcode
+#end
+
+
+
+## Lista do dia 04/12 
 ## TODO: comentar o codigo até a proxima lista!
-lista2 = CSV.read(Rails.root.join('db/guests/lista2_3011.csv'), encoding: 'ISO8859-1')
+lista3 = CSV.read(Rails.root.join('db/guests/lista3_0412.csv'), encoding: 'ISO8859-1')
 
 
-lista2.each do |guest|
+lista3.each do |guest|
 
   if guest[0].blank?
     next
@@ -58,6 +75,5 @@ lista2.each do |guest|
   g = Guest.where(name: guest[0].strip, email: guest[1].strip, scheduled_at: DateTime.strptime(guest[2], '%d/%m/%y')).first_or_create
   puts g.barcode
 end
-
 
 
