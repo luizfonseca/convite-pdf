@@ -5,6 +5,7 @@ gem 'puma'
 gem 'barby'
 gem 'wicked_pdf'
 gem 'chunky_png'
+gem 'responders'
 
 group :production do
   gem 'wkhtmltopdf-heroku'

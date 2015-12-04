@@ -17,4 +17,18 @@ class Guest < ActiveRecord::Base
       jazz = false
     end
   end
+
+
+  def as_json(options)
+    {
+      id: self.id,
+      name: self.name,
+      scheduled_at: self.scheduled.strftime('%dd'),
+      checked_at: self.checked_at,
+      group: self.group,
+      barcode: self.barcode
+
+
+    }.merge(options)
+  end
 end
