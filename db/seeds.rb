@@ -63,7 +63,24 @@ require 'csv'
 
 ## Lista do dia 04/12 
 ## TODO: comentar o codigo até a proxima lista!
-lista3 = CSV.read(Rails.root.join('db/guests/lista3_0412.csv'), encoding: 'ISO8859-1')
+#lista3 = CSV.read(Rails.root.join('db/guests/lista3_0412.csv'), encoding: 'ISO8859-1')
+
+
+#lista3.each do |guest|
+
+  #if guest[0].blank?
+    #next
+  #end
+
+  #g = Guest.where(name: guest[0].strip, email: guest[1].strip, scheduled_at: DateTime.strptime(guest[2], '%d/%m/%y')).first_or_create
+  #puts g.barcode
+#end
+
+
+
+# Lista UPDATE do dia 04/12 
+# TODO: comentar o codigo até a proxima lista!
+lista3 = CSV.read(Rails.root.join('db/guests/lista_update_0412.csv'), encoding: 'ISO8859-1')
 
 
 lista3.each do |guest|
@@ -72,7 +89,14 @@ lista3.each do |guest|
     next
   end
 
-  g = Guest.where(name: guest[0].strip, email: guest[1].strip, scheduled_at: DateTime.strptime(guest[2], '%d/%m/%y')).first_or_create
+  g = Guest.find_by(email: guest[1].strip)
+  if g.present?
+    g.scheduled_at = DateTime.strptime(guest[2], '%d/%m/%y')
+    g.save!
+  else
+    puts "ERROR: #{guest[1]}"
+  end
+
   puts g.barcode
 end
 
