@@ -102,22 +102,21 @@ require 'csv'
 
 
 # Group updates
+grupo = CSV.read(Rails.root.join('db/guests/grupos.csv'))
 
-#lista3 = CSV.read(Rails.root.join('db/guests/lista_update_0412.csv'), encoding: 'ISO8859-1')
 
+grupo.each do |guest|
 
-#lista3.each do |guest|
+  if guest[2].blank?
+    next
+  end
 
-  #if guest[0].blank?
-    #next
-  #end
+  g = Guest.find_by(email: guest[2].strip)
+  if g.present?
+    g.update_attribute(:group, guest[1])
+    puts g.group
+  else
+    puts "ERROR: #{guest[2]}"
+  end
 
-  #g = Guest.find_by(email: guest[1].strip)
-  #if g.present?
-    #g.update_attribute(:scheduled_at, DateTime.strptime(guest[2], '%d/%m/%y'))
-    #puts g.barcode
-  #else
-    #puts "ERROR: #{guest[1]}"
-  #end
-
-#end
+end
