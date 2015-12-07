@@ -79,24 +79,45 @@ require 'csv'
 
 
 # Lista UPDATE do dia 04/12 
-# TODO: comentar o codigo até a proxima lista!
-lista3 = CSV.read(Rails.root.join('db/guests/lista_update_0412.csv'), encoding: 'ISO8859-1')
+## TODO: comentar o codigo até a proxima lista!
+#lista3 = CSV.read(Rails.root.join('db/guests/lista_update_0412.csv'), encoding: 'ISO8859-1')
 
 
-lista3.each do |guest|
+#lista3.each do |guest|
 
-  if guest[0].blank?
-    next
-  end
+  #if guest[0].blank?
+    #next
+  #end
 
-  g = Guest.find_by(email: guest[1].strip)
-  if g.present?
-    g.update_attribute(:scheduled_at, DateTime.strptime(guest[2], '%d/%m/%y'))
-    puts g.barcode
-  else
-    puts "ERROR: #{guest[1]}"
-  end
+  #g = Guest.find_by(email: guest[1].strip)
+  #if g.present?
+    #g.update_attribute(:scheduled_at, DateTime.strptime(guest[2], '%d/%m/%y'))
+    #puts g.barcode
+  #else
+    #puts "ERROR: #{guest[1]}"
+  #end
 
-end
+#end
 
 
+
+# Group updates
+
+#lista3 = CSV.read(Rails.root.join('db/guests/lista_update_0412.csv'), encoding: 'ISO8859-1')
+
+
+#lista3.each do |guest|
+
+  #if guest[0].blank?
+    #next
+  #end
+
+  #g = Guest.find_by(email: guest[1].strip)
+  #if g.present?
+    #g.update_attribute(:scheduled_at, DateTime.strptime(guest[2], '%d/%m/%y'))
+    #puts g.barcode
+  #else
+    #puts "ERROR: #{guest[1]}"
+  #end
+
+#end

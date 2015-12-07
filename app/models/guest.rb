@@ -2,7 +2,7 @@ class Guest < ActiveRecord::Base
 
 
   before_create :generate_barcode
-
+  default_scope { order('name ASC') }
 
   def generate_barcode
     jazz = true
@@ -19,11 +19,12 @@ class Guest < ActiveRecord::Base
   end
 
 
-  def as_json(options)
+  def as_json(options = {})
     {
       id: self.id,
       name: self.name,
-      scheduled_at: self.scheduled.strftime('%dd'),
+      email: self.email,
+      scheduled_at: self.scheduled_at.strftime('%d'),
       checked_at: self.checked_at,
       group: self.group,
       barcode: self.barcode

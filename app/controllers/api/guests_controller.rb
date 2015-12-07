@@ -6,8 +6,15 @@ class Api::GuestsController < ApplicationController
 
 
   def index
-    @guests = Guest.all
-    render json: @guests, status: :ok
+    if params[:query] and params[:query].present?
+      @guests = Guest.where('name LIKE :name OR email like :name', name: "%#{params[:query]}%")
+    else
+      @guests = Guest.all
+    end
+    
+    respond_to do |format|
+      format.json { render json: @guests, status: :ok }
+    end
   end
 
   def update 
