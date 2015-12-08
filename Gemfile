@@ -6,6 +6,7 @@ gem 'barby'
 gem 'wicked_pdf'
 gem 'chunky_png'
 gem 'responders'
+gem 'pg_search'
 
 group :production do
   gem 'wkhtmltopdf-heroku'

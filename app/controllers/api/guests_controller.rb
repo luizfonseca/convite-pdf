@@ -7,7 +7,7 @@ class Api::GuestsController < ApplicationController
 
   def index
     if params[:query] and params[:query].present?
-      @guests = Guest.where('name LIKE :name OR email like :name', name: "%#{params[:query]}%")
+      @guests = Guest.search params[:query]
     else
       @guests = Guest.all
     end

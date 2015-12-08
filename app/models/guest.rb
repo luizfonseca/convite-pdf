@@ -1,5 +1,7 @@
 class Guest < ActiveRecord::Base
-
+  include PgSearch
+  pg_search_scope :search, :against => [:name, :email]
+  
 
   before_create :generate_barcode
   default_scope { order('name ASC') }
