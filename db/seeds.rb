@@ -102,21 +102,49 @@ require 'csv'
 
 
 # Group updates
-grupo = CSV.read(Rails.root.join('db/guests/grupos.csv'))
+#grupo = CSV.read(Rails.root.join('db/guests/grupos.csv'))
+
+
+#grupo.each do |guest|
+
+#  if guest[2].blank?
+#    next
+#  end
+#
+#  g = Guest.find_by(email: guest[2].strip)
+#  if g.present?
+#    g.update_attribute(:group, guest[1])
+#    puts g.group
+#  else
+#    puts "ERROR: #{guest[2]}"
+#  end
+#
+#end
+
+
+
+grupo = CSV.read(Rails.root.join('db/guests/lista_update_1012.csv'))
 
 
 grupo.each do |guest|
 
-  if guest[2].blank?
+  if guest[1].blank?
     next
   end
+#
+  g = Guest.where(email: guest[1].strip).first_or_initialize
+  
+    g.name = guest[0]
+    g.checked_at = DateTime.strptime(guest[3], '%m/%d/%y %H:%M')
+    g.group = guest[2]
+    g.scheduled_at = DateTime.parse('2015-12-09')
+    g.save!
+    puts g
 
-  g = Guest.find_by(email: guest[2].strip)
-  if g.present?
-    g.update_attribute(:group, guest[1])
-    puts g.group
-  else
-    puts "ERROR: #{guest[2]}"
-  end
-
+    puts "EXISTING: #{guest[1]}"
+ 
+#
 end
+
+
+

@@ -1,5 +1,27 @@
 <div class="row">
   <div class="medium-centered medium-10 columns">
-     <img src="http://i.imgur.com/QTdbN2F.png"/>
+     <%= image_tag "logo.png", style: "display: block; width: 40%; margin: 0 auto" %>
+
+	<div style="width: 30%; display: inline-block; text-align: center">
+		<h3>Dia 08</h3>
+		<p>
+			<%= Guest.where("to_char(checked_at, 'DD') = '08'").count %>
+		</p>
+	</div>
+
+
+	<div style="width: 30%; display: inline-block; text-align: center">
+		<h3>Dia 09</h3>
+		<p>
+			<%= Guest.where("to_char(checked_at, 'DD') = '09'").count %>
+		</p>
+	</div>
+
+	<div style="width: 30%; display: inline-block; text-align: center">
+		<h3>Dia 10</h3>
+		<p>
+			<%= Guest.where("to_char(checked_at, 'DD') = '10'").count %>
+		</p>
+	</div>
   </div>
 </div>
